@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DG-HoloSpawner:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DG_HoloSpawner_jar</output-path>
+    <root id="archive" name="DG-HoloSpawner.jar">
+      <element id="module-output" name="DG-HoloSpawner" />
+    </root>
+  </artifact>
+</component>

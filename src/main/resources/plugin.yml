@@ -1,0 +1,12 @@
+name: DG-HoloSpawner
+version: 1.2
+main: com.aqua.holospawner.Main
+author: MrFat
+softdepend: [MythicMobs, HolographicDisplays]
+commands:
+  dgholospawner:
+    aliases: [dghs]
+  dgholospawneredit:
+    aliases: [dghe]
+  dgholospawnerhelp:
+    aliases: [dghh]
