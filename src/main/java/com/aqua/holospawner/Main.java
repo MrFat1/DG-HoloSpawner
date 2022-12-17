@@ -1,8 +1,6 @@
 package com.aqua.holospawner;
 
-import com.aqua.holospawner.commands.HoloSpawnerHelp;
 import com.aqua.holospawner.commands.SpawnerCommand;
-import com.aqua.holospawner.commands.SpawnerEdit;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import io.lumine.mythic.bukkit.MythicBukkit;
@@ -45,8 +43,6 @@ public class Main extends JavaPlugin implements Listener {
         }
 
         getCommand("dgholospawner").setExecutor(new SpawnerCommand(this));
-        getCommand("dgholospawneredit").setExecutor(new SpawnerEdit(this));
-        getCommand("dgholospawnerhelp").setExecutor(new HoloSpawnerHelp());
 
         Bukkit.getPluginManager().registerEvents(this, this);
 
