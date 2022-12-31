@@ -118,6 +118,8 @@ public class SpawnerCommand implements CommandExecutor {
                         p.sendMessage("§7");
                         p.sendMessage(ChatColor.GOLD + "------------------------------------------");
 
+                        break;
+
                     default:
                         p.sendMessage(ChatColor.DARK_RED.toString() + ChatColor.BOLD + ">> " + ChatColor.RED + "Ese comando no existe.");
                 }
