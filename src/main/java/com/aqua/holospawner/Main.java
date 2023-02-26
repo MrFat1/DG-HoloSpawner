@@ -95,9 +95,8 @@ public class Main extends JavaPlugin implements Listener {
             Hologram hl = HologramsAPI.createHologram(Bukkit.getPluginManager().getPlugin("DG-HoloSpawner"), loc);
 
             String nombre = holos.getString(key + ".nombre");
-            MythicSpawner ms = MythicBukkit.inst().getSpawnerManager().getSpawnerByName(holos.getString(key + ".spawner"));
 
-            crearHolograma(hl, ms, nombre);
+            crearHolograma(hl, holos.getString(key + ".spawner"), nombre);
 
             listholos.put(key, hl);
 
@@ -108,15 +107,21 @@ public class Main extends JavaPlugin implements Listener {
 
     }
 
-    public void crearHolograma(Hologram holo, MythicSpawner spawner, String nombremob) {
+    public void crearHolograma(Hologram holo, String ms, String nombremob) {
 
         new BukkitRunnable() {
+
             public void run() {
+
+                MythicSpawner spawner = MythicBukkit.inst().getSpawnerManager().getSpawnerByName(ms);
+
                 if (spawner == null) {
                     holo.delete();
                     this.cancel();
                 }
                 if (!holo.isDeleted()) {
+
+
 
                     int s = spawner.getRemainingCooldownSeconds();
                     int sec = s % 60;
@@ -135,13 +140,13 @@ public class Main extends JavaPlugin implements Listener {
 
                     String mobs;
 
-                    if (spawner.getNumberOfMobs() > 0) {
+                    /*if (spawner.getNumberOfMobs() > 0) {
                         mobs = ChatColor.GREEN + "Si";
                     } else {
                         mobs = ChatColor.RED + "No";
-                    }
+                    }*/
 
-                    holo.appendTextLine("§7Boss spawneado: §a" + mobs);
+                    //holo.appendTextLine("§7Boss spawneado: §a" + mobs);
                     holo.appendTextLine(cooldown);
                 }
                 else {
@@ -150,5 +155,6 @@ public class Main extends JavaPlugin implements Listener {
             }
         }.runTaskTimer(this, 0L, 20L);
     }
+
 
 }

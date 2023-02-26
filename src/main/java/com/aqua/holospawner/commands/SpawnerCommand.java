@@ -3,14 +3,17 @@ package com.aqua.holospawner.commands;
 import com.aqua.holospawner.Main;
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
 import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
+import com.gmail.filoghost.holographicdisplays.api.line.HologramLine;
 import io.lumine.mythic.bukkit.MythicBukkit;
 import io.lumine.mythic.core.spawning.spawners.MythicSpawner;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import static org.bukkit.ChatColor.translateAlternateColorCodes;
 
@@ -67,7 +70,7 @@ public class SpawnerCommand implements CommandExecutor {
                         } else {
                             p.sendMessage(ChatColor.DARK_RED.toString() + ChatColor.BOLD + ">> " + ChatColor.RED + "Sintaxis incorrecta, utiliza /dghs delete <nombre del spawner>");
                         }
-
+                        break;
 
                     case "tphere":
                         if (args.length >=2) {
@@ -146,8 +149,6 @@ public class SpawnerCommand implements CommandExecutor {
 
             String nombremobbonito = translateAlternateColorCodes('&', sb.toString());
 
-            MythicSpawner ms = MythicBukkit.inst().getSpawnerManager().getSpawnerByName(args[1]);
-
             Hologram holo = HologramsAPI.createHologram(Bukkit.getPluginManager().getPlugin("DG-HoloSpawner"), p.getLocation().add(0, 2, 0));
             String nombreholo = args[1];
 
@@ -157,7 +158,7 @@ public class SpawnerCommand implements CommandExecutor {
             } else {
 
                 main.listholos.put(nombreholo, holo);
-                main.crearHolograma(holo, ms, nombremobbonito);
+                main.crearHolograma(holo, args[1], nombremobbonito);
 
                 try {
                     main.editFile("hologramas.yml", nombreholo + ".nombre", nombremobbonito);
